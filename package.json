@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/Fahlalla/workingRecord/issues"
   },
-  "homepage": "https://github.com/Fahlalla/workingRecord#readme"
+  "homepage": "https://github.com/Fahlalla/workingRecord#readme",
+  "type": "module"
 }
