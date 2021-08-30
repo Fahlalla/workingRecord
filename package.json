@@ -1,0 +1,19 @@
+{
+  "name": "workingrecord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fahlalla/workingRecord.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fahlalla/workingRecord/issues"
+  },
+  "homepage": "https://github.com/Fahlalla/workingRecord#readme"
+}
