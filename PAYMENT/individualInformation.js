@@ -19,4 +19,4 @@ class individualInformation{
         }
 }
 
-module.exports = individualInformation;
+exports = individualInformation;

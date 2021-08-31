@@ -14,4 +14,4 @@ class WorkingRecord {
     }
 }
 
-module.exports = WorkingRecord;
+exports = WorkingRecord;
