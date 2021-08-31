@@ -8,4 +8,21 @@ export default class IndividualInformation {
     this.site = site;
     this.dailyRate = dailyRate;
   }
-}
+};
+const ford = new IndividualInformation(
+  "panudet",
+  "jitti",
+  "Ford",
+  "1234567890",
+  "glock@odds.team",
+  "Saksiam",
+  "999",
+);
+
+const individualInformationMap = new Map();
+
+individualInformationMap.set("glock@odds.team", ford);
+
+console.log(individualInformationMap.get("glock@odds.team"));
+
+export {individualInformationMap};
