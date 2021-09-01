@@ -6,7 +6,6 @@ export default class WorkingRecord {
     this.site = site;
     this.remark = remark;
   }
-
 }
 const ford = new WorkingRecord(
   "glock@odds.team",
@@ -22,4 +21,4 @@ workingRecordMap.set("glock@odds.team", ford);
 
 console.log(workingRecordMap.get("glock@odds.team"));
 
-export {workingRecordMap};
+export { workingRecordMap };
