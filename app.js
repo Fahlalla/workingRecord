@@ -15,19 +15,16 @@ app.listen(port, () => {
 });
 
 app.get("/individual-information/:email", (req, res) => {
-  let email = req.params.email;
-  let individualInformation = individualInformationMap.get(email);
+  let individualInformation = individualInformationMap.get(req.params.email);
   res.json(individualInformation);
 });
 
 app.get("/working-records/:email", (req, res) => {
-  let email = req.params.email;
-  let workingRecord = workingRecordMap.get(email);
+  let workingRecord = workingRecordMap.get(req.params.email);
   res.json(workingRecord);
 });
 
 app.get("/monthly-payment/:email", (req, res) => {
-  let email = req.params.email;
-  let monthlyPayment = createMonthlyPayment(email);
+  let monthlyPayment = createMonthlyPayment(req.params.email);
   res.json(monthlyPayment);
 });

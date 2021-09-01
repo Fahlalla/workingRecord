@@ -23,4 +23,5 @@ class monthlyPayment {
         this.remark = remark;
     }
 }
+
 export {monthlyPayment}
