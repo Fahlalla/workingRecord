@@ -22,7 +22,7 @@ function transferAmount(email) {
     working.workingDay,
     working.submittedDate,
     working.remark,
-    monthlyPayment(individual.dailyRate, working.workingDay),
+    createMonthlyPayment(email),
   );
   return result;
 }
