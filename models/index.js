@@ -8,6 +8,23 @@ function createMonthlyPayment(email) {
   return invidualInformation.dailyRate * workingRecord.workingDay;
 }
 
+function transferAmount(email) {
+  let individual = individualInformationMap.get(email);
+  let working = workingRecordMap.get(email);
+
+  const result = new monthlyPayment(
+    individual.name,
+    individual.surname,
+    individual.nickName,
+    individual.accountNumber,
+    individual.telephoneNumber,
+    individual.dailyRate,
+    working.workingDay,
+    working.submittedDate,
+    working.remark,
+    monthlyPayment(individual.dailyRate, working.workingDay),
+  )
+}
 
 export {createMonthlyPayment}
 
