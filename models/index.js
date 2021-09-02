@@ -23,8 +23,9 @@ function transferAmount(email) {
     working.submittedDate,
     working.remark,
     monthlyPayment(individual.dailyRate, working.workingDay),
-  )
+  );
+  return result;
 }
 
-export {createMonthlyPayment}
+export {createMonthlyPayment, transferAmount};
 
