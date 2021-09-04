@@ -14,10 +14,6 @@ app.post("/", (req, res) => {
   res.status(200).send("Hello World!");
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
-
 app.get("/individual-information/:email", (req, res) => {
   let individualInformation = individualInformationMap.get(req.params.email);
   res.json(individualInformation);
@@ -31,6 +27,10 @@ app.get("/working-records/:email", (req, res) => {
 app.get("/monthly-payment/:email", (req, res) => {
   let monthlyPayment = transferAmount(req.params.email);
   res.json(monthlyPayment);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
 });
 
 export default app;
