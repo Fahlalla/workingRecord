@@ -13,6 +13,11 @@ test ('api path / should be return hello world',async() => {
  
 });
 
+test('api path /individual-information/', async() => {
+  const res = await request(app).get('/individual-information/glock@odds.team')
+  expect(res.statusCode).toEqual(200)
+  expect(res.text).toBe("{\"name\":\"panudet\",\"surname\":\"jitti\",\"nickName\":\"Ford\",\"phoneNumber\":\"1234567890\",\"email\":\"glock@odds.team\",\"site\":\"Saksiam\",\"dailyRate\":\"999\"}")
+});
 //app.get("/999", (req, res) => {
  // res.send("Hello Siri!");
 //});
