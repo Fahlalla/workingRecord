@@ -4,7 +4,7 @@ import { workingRecordMap } from "./models/workingRecords.js";
 import { transferAmount } from "./models/index.js";
 
 const app = express();
-const port = 3000;
+const port = 999;
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -28,3 +28,5 @@ app.get("/monthly-payment/:email", (req, res) => {
   let monthlyPayment = transferAmount(req.params.email);
   res.json(monthlyPayment);
 });
+
+export {app}

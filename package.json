@@ -5,6 +5,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "mon": "nodemon --exec  \"npm run test\"",
     "test": "node --experimental-vm-modules node_modules/.bin/jest"
   },
   "repository": {
@@ -18,10 +19,11 @@
   },
   "homepage": "https://github.com/Fahlalla/workingRecord#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.12"
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "jest": "^27.1.0"
+    "jest": "^27.1.0",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.6"
   }
 }
