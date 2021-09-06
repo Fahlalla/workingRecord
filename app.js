@@ -10,7 +10,8 @@ app.get("/", (req, res) => {
   res.status(200).send("Hello World!");
 });
 
-app.listen(port, () => {
+
+const server = app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 
@@ -29,4 +30,4 @@ app.get("/monthly-payment/:email", (req, res) => {
   res.json(monthlyPayment);
 });
 
-export {app}
+export {app, server}
