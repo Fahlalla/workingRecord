@@ -23,6 +23,4 @@ const individualInformationMap = new Map();
 
 individualInformationMap.set("glock@odds.team", ford);
 
-console.log(individualInformationMap.get("glock@odds.team"));
-
 export {individualInformationMap};

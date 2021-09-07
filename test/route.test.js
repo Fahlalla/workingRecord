@@ -16,7 +16,7 @@ describe("Post Endpoints", () => {
 
   test ('api path / should be return hello world',async() => {
 
-    const res = await request(app).get('/')
+   const res = await request(app).get('/')
    expect(res.statusCode).toEqual(200)
    expect(res.text).toBe("Hello World!")
   });
@@ -28,3 +28,23 @@ describe("Post Endpoints", () => {
   });
 });
 
+describe("When call api path /working-records", () => {
+  const email = "glock@odds.team";
+  const url = `/working-records/${email}`;
+  const urlWithOutEmail = "/working-records/";
+
+  it("Should return response status 200", async () => {
+    const res = await request(app).get(url)
+    expect(res.statusCode).toEqual(200);
+  })
+  it("Should return response contain workingDay", async () => {
+    const res = await request(app).get(url)
+    expect(res.text).toContain("workingDay");
+  })
+
+  it("Should fail when call api path without email", async () => {
+    const res = await request(app).get(urlWithOutEmail);
+    expect(res.statusCode).toBe(404);
+  })
+
+})

@@ -19,6 +19,4 @@ const workingRecordMap = new Map();
 
 workingRecordMap.set("glock@odds.team", ford);
 
-console.log(workingRecordMap.get("glock@odds.team"));
-
 export { workingRecordMap };
