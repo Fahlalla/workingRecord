@@ -4,7 +4,7 @@ import { workingRecordMap } from "./models/workingRecords.js";
 import { transferAmount } from "./models/index.js";
 
 const app = express();
-const port = 999;
+const port = 3000;
 
 app.get("/", (req, res) => {
   res.status(200).send("Hello World!");
