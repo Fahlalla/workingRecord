@@ -51,5 +51,26 @@ describe("When call api path /working-records", () => {
     const res = await request(app).get(urlWithOutEmail);
     expect(res.statusCode).toBe(404);
   })
+})
+
+describe("When call api path /monthly-payment/", () => {
+  const email = "glock@odds.team";
+  const url = `/monthly-payment/${email}`;
+  const urlWithOutEmail = "/monthly-payment/";
+
+  it("Should return response status 200", async () => {
+    const res = await request(app).get(url);
+    expect(res.statusCode).toEqual(200);
+  })
+
+  it("Should return response contain transferAmount", async () => {
+    const res = await request(app).get(url)
+    expect(res.text).toContain("transferAmount");
+  })
+
+  it("Should fail when call api path without email", async () => {
+    const res = await request(app).get(urlWithOutEmail);
+    expect(res.statusCode).toBe(404);
+  })
 
 })
