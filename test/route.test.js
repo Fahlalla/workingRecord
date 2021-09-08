@@ -60,7 +60,7 @@ describe("When call api path /monthly-payment/", () => {
 		expect(res.statusCode).toEqual(200);
 	});
 
-	it("Should return response contain transferAmount", async () => {
+	it("Should return 20979 as total transfer", async () => {
 		const res = await request(app).get(url);
 		expect(res.text).toContain("20979");
 	});
