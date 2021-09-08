@@ -1,7 +1,7 @@
 import express from "express";
 import { individualInformationMap } from "./models/individualInformation.js";
 import { workingRecordMap } from "./models/workingRecords.js";
-import { transferAmount } from "./models/index.js";
+import { createMonthlyPayment, transferAmount } from "./models/index.js";
 
 const app = express();
 const port = 3000;
@@ -26,7 +26,7 @@ app.get("/working-records/:email", (req, res) => {
 });
 
 app.get("/monthly-payment/:email", (req, res) => {
-  let monthlyPayment = transferAmount(req.params.email);
+  let monthlyPayment = createMonthlyPayment(req.params.email);
   res.json(monthlyPayment);
 });
 
