@@ -62,7 +62,7 @@ describe("When call api path /monthly-payment/", () => {
 
 	it("Should return response contain transferAmount", async () => {
 		const res = await request(app).get(url);
-		expect(res.text).toContain("transferAmount");
+		expect(res.text).toContain("20979");
 	});
 
 	it("Should fail when call api path without email", async () => {
