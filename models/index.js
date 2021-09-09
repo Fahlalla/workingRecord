@@ -6,15 +6,10 @@ function createMonthlyPayment(email) {
   let invidualInformation = individualInformationMap.get(email);
   let workingRecord = workingRecordMap.get(email);
 
-/*
-เช็คว่าข้อมูลพนักงานมีอยู่จริง
-*/
   if(invidualInformation === null){
     return "individual information is null"
   }
-/* 
-เช็คว่า วันทำงานต้องไม่เกิน 31 วัน
-*/
+
   if(parseInt(workingRecord.workingDay) > 31) {
     return "วันทำงานเกิน"
   }
@@ -22,8 +17,6 @@ function createMonthlyPayment(email) {
   if(workingRecord.workingDay === "") {
     return "working = null"
   }
-
-
 
   return invidualInformation.dailyRate * workingRecord.workingDay;
 }
