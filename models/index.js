@@ -5,8 +5,9 @@ import { monthlyPayment } from "./monthlyPayment.js";
 function createMonthlyPayment(email) {
   let invidualInformation = individualInformationMap.get(email);
   let workingRecord = workingRecordMap.get(email);
-
-  if(invidualInformation === null){
+  
+  console.log(invidualInformation)
+  if(invidualInformation == null){
     return "individual information is null"
   }
 
@@ -20,6 +21,7 @@ function createMonthlyPayment(email) {
 
   return invidualInformation.dailyRate * workingRecord.workingDay;
 }
+createMonthlyPayment("glock@odd.team")
 
 function transferAmount(email) {
   let individual = individualInformationMap.get(email);
