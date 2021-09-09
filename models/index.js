@@ -5,23 +5,21 @@ import { monthlyPayment } from "./monthlyPayment.js";
 function createMonthlyPayment(email) {
   let invidualInformation = individualInformationMap.get(email);
   let workingRecord = workingRecordMap.get(email);
-  
-  console.log(invidualInformation)
-  if(invidualInformation == null){
-    return "individual information is null"
+
+  if (invidualInformation == null) {
+    return "individual information is null";
   }
 
-  if(parseInt(workingRecord.workingDay) > 31) {
-    return "วันทำงานเกิน"
+  if (parseInt(workingRecord.workingDay) > 31) {
+    return "วันทำงานเกิน";
   }
 
-  if(workingRecord.workingDay === "") {
-    return "working = null"
+  if (workingRecord.workingDay === "") {
+    return "working = null";
   }
 
   return invidualInformation.dailyRate * workingRecord.workingDay;
 }
-createMonthlyPayment("glock@odd.team")
 
 function transferAmount(email) {
   let individual = individualInformationMap.get(email);
@@ -37,10 +35,9 @@ function transferAmount(email) {
     working.workingDay,
     working.submittedDate,
     working.remark,
-    createMonthlyPayment(email),
+    createMonthlyPayment(email)
   );
   return result;
 }
 
-export {createMonthlyPayment, transferAmount};
-
+export { createMonthlyPayment, transferAmount };
