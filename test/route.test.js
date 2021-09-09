@@ -70,3 +70,5 @@ describe("When call api path /monthly-payment/", () => {
 		expect(res.statusCode).toBe(404);
 	});
 });
+
+
