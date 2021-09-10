@@ -21,8 +21,11 @@ app.get("/individual-information/:email", (req, res) => {
 });
 
 app.get("/working-records/:email", (req, res) => {
-  let workingRecord = workingRecordMap.get(req.params.email);
-  res.json(workingRecord);
+  const email = req.params.email;
+  let workingRecord = workingRecordMap.get(email);
+  if(workingRecord == undefined)
+    return res.status(404).json('Working record not found');
+  return res.status(200).json(workingRecord);
 });
 
 app.get("/monthly-payment/:email", (req, res) => {
