@@ -13,7 +13,7 @@ const ford = new IndividualInformation(
   "panudet",
   "jitti",
   "Ford",
-  "1234567890",
+  "1",
   "glock@odds.team",
   "Saksiam",
   "999"
