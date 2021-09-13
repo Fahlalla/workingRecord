@@ -30,7 +30,6 @@ app.get("/working-records/:email", (req, res) => {
 
 app.get("/monthly-payment/:email", (req, res) => {
   let monthlyPayment = createMonthlyPayment(req.params.email);
-  console.log('aaaaa', monthlyPayment)
   res.json(monthlyPayment);
 });
 
