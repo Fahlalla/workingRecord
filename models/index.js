@@ -28,27 +28,46 @@ function validateIndividualInformation(individualInformation) {
   return 'complete'
 }
 
+function validateWorkingRecord(workingRecord) {
+  // validate email
+  const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(workingRecord.email)
+  if (!isValidEmail) {
+    return 'invalid email'
+  }
+
+  // validate dailyRate more than 0
+  const isValidDailyRate = parseInt(workingRecord.workingDay) < 0 
+  if (!isValidDailyRate) {
+    return 'invalid working day'
+  }
+  return 'complete'
+}
+
 console.log(validateIndividualInformation(individualInformationMap.get('glock@odds.team')))
 
 function createMonthlyPayment(email) {
-  let invidualInformation = individualInformationMap.get(email);
+  let individualInformation = individualInformationMap.get(email);
   let workingRecord = workingRecordMap.get(email);
 
-  validateIndividualInformation(invidualInformation)
+  var individualInfoValidated = validateIndividualInformation(individualInformation);
+  var workingRecordValidated = validateWorkingRecord(workingRecord);
 
-  if (invidualInformation == null) {
+  if (individualInfoValidated == null) {
     return "individual information is null";
+  }
+
+  if (workingRecordValidated == null) {
+    return "working record information is null";
   }
 
   if (parseInt(workingRecord.workingDay) > 31) {
     return "วันทำงานเกิน";
   }
 
-  if (workingRecord.workingDay === "") {
+  if (workingRecord.workingDay == null) {
     return "working = null";
   }
-
-  return invidualInformation.dailyRate * workingRecord.workingDay;
+  return individualInformation.dailyRate * workingRecord.workingDay;
 }
 
 function transferAmount(email) {
