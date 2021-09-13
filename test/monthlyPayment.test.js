@@ -6,10 +6,6 @@ describe("test function createmonthlyPayment", () => {
   it("Should return transferAmount", () => {
     expect(createMonthlyPayment(email)).toEqual(20979);
   });
-
-  it("Should return null when invalid email", () => {
-    expect(createMonthlyPayment()).toBe("individual information is null");
-  });
 });
 
 describe("test validate individual", () => {
