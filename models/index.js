@@ -3,6 +3,10 @@ import { workingRecordMap } from "./workingRecords.js";
 import { monthlyPayment } from "./monthlyPayment.js";
 
 function validateIndividualInformation(individualInformation) {
+    if (individualInformation == undefined) {
+        return ''
+    }
+   
   // validate email
   const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(individualInformation.email)
   if (!isValidEmail) {

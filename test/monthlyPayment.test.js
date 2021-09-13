@@ -1,4 +1,6 @@
 import { createMonthlyPayment } from "../models/index.js";
+import { individualInformationMap } from "../models/individualInformation.js";
+import {IndividualInformation} from "../models/individualInformation.js";
 
 describe("test function createmonthlyPayment", () => {
   const email = "glock@odds.team";
@@ -8,7 +10,7 @@ describe("test function createmonthlyPayment", () => {
   });
 
   it("Should return null when invalid email", () => {
-    expect(createMonthlyPayment()).toBe("individual information is null");
+    expect(createMonthlyPayment("glock@onvrdisplaydisconnect.team")).toBe("individual information is null");
   });
 });
 

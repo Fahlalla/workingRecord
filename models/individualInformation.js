@@ -13,7 +13,7 @@ const ford = new IndividualInformation(
   "panudet",
   "jitti",
   "Ford",
-  "1",
+  "1234567890",
   "glock@odds.team",
   "Saksiam",
   "999"
@@ -23,4 +23,4 @@ const individualInformationMap = new Map();
 
 individualInformationMap.set("glock@odds.team", ford);
 
-export {individualInformationMap};
+export {IndividualInformation,individualInformationMap};
