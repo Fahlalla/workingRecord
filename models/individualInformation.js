@@ -18,6 +18,35 @@ const ford = new IndividualInformation(
   "Saksiam",
   "999"
 );
+const fame = new IndividualInformation(
+  "Anuntasupt",
+  "Preechachan",
+  "Fame",
+  "0808008080",
+  "fameanunn@odds.team",
+  "Morchana",
+  "500"
+);
+
+const smile = new IndividualInformation(
+  "pakawat",
+  "tongchanda",
+  "Smile",
+  "0808008081",
+  "smile@odds.team",
+  "Morchana",
+  "550"
+);
+
+const fah = new IndividualInformation(
+  "tadsika",
+  "khongkasawan",
+  "Fah",
+  "0808008082",
+  "tadsika@odds.team",
+  "saksiam",
+  "560"
+);
 
 const individualInformationMap = new Map();
 
