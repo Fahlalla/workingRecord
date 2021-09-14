@@ -2,54 +2,58 @@ import { individualInformationMap } from "./individualInformation.js";
 import { workingRecordMap } from "./workingRecords.js";
 import { monthlyPayment } from "./monthlyPayment.js";
 
+const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
+const isValidPhoneNumber = /^\d{10}$/;
+
 function validateIndividualInformation(individualInformation) {
-    if (individualInformation == undefined) {
-        return ''
-    }
-   
+  if (individualInformation == undefined) {
+    return "";
+  }
+
   // validate email
-  const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(individualInformation.email)
-  if (!isValidEmail) {
-    return 'invalid email'
+  if (!isValidEmail.test(individualInformation.email)) {
+    return "invalid email";
   }
 
   // validate number equals 10
-  const isValidPhoneNumber = /^\d{10}$/.test(individualInformation.phoneNumber)
-  if (!isValidPhoneNumber) {
-    return 'invalid phone number'
+  if (!isValidPhoneNumber.test(individualInformation.phoneNumber)) {
+    return "invalid phone number";
   }
 
   // validate dailyRate more than 0
-  const isValidDailyRate = parseInt(individualInformation.dailyRate) > 0
+  const isValidDailyRate = parseInt(individualInformation.dailyRate) > 0;
   if (!isValidDailyRate) {
-    return 'invalid daily rate'
+    return "invalid daily rate";
   }
 
-  return 'complete'
+  return "complete";
 }
 
 function validateWorkingRecord(workingRecord) {
   // validate email
-  const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(workingRecord.email)
-  if (!isValidEmail) {
-    return 'invalid email'
+  if (!isValidEmail.test(workingRecord.email)) {
+    return "invalid email";
   }
 
   // validate dailyRate more than 0
-  const isValidDailyRate = parseInt(workingRecord.workingDay) < 0 
+  const isValidDailyRate = parseInt(workingRecord.workingDay) < 0;
   if (!isValidDailyRate) {
-    return 'invalid working day'
+    return "invalid working day";
   }
-  return 'complete'
+  return "complete";
 }
 
-console.log(validateIndividualInformation(individualInformationMap.get('glock@odds.team')))
+console.log(
+  validateIndividualInformation(individualInformationMap.get("glock@odds.team"))
+);
 
 function createMonthlyPayment(email) {
   let individualInformation = individualInformationMap.get(email);
   let workingRecord = workingRecordMap.get(email);
 
-  var individualInfoValidated = validateIndividualInformation(individualInformation);
+  var individualInfoValidated = validateIndividualInformation(
+    individualInformation
+  );
   var workingRecordValidated = validateWorkingRecord(workingRecord);
 
   if (individualInfoValidated == null) {
