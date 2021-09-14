@@ -35,9 +35,9 @@ function validateWorkingRecord(workingRecord) {
     return "invalid email";
   }
 
-  // validate dailyRate more than 0
-  const isValidDailyRate = parseInt(workingRecord.workingDay) < 0;
-  if (!isValidDailyRate) {
+  // validate workingDay more than 0
+  const isValidWorkingDay = parseInt(workingRecord.workingDay) < 0;
+  if (!isValidWorkingDay) {
     return "invalid working day";
   }
   return "complete";
