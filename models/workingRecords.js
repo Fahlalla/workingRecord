@@ -15,8 +15,44 @@ const ford = new WorkingRecord(
   "100"
 );
 
+const fame = new WorkingRecord(
+  "fameanunn@odds.team",
+  "20",
+  "11/11/2021",
+  "Morchana",
+  "2"
+);
+
+const smile = new WorkingRecord(
+  "smile@odds.team",
+  "22",
+  "11/11/2021",
+  "Morchana",
+  "1"
+);
+
+const fah = new WorkingRecord(
+  "tadsika@odds.team",
+  "23",
+  "11/11/2021",
+  "saksiam",
+  ""
+);
+
+const glock = new WorkingRecord(
+  "glockza@odds.team",
+  "22",
+  "11/11/2021",
+  "Morchana",
+  ""
+);
+
 const workingRecordMap = new Map();
 
 workingRecordMap.set("glock@odds.team", ford);
+workingRecordMap.set("fameanunn@odds.team", fame);
+workingRecordMap.set("smile@odds.team", smile);
+workingRecordMap.set("tadsika@odds.team", fah);
+workingRecordMap.set("glockza@odds.team", glock);
 
 export { workingRecordMap };

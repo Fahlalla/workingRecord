@@ -47,9 +47,22 @@ const fah = new IndividualInformation(
   "saksiam",
   "560"
 );
+const glock = new IndividualInformation(
+  "boonyarid",
+  "chaiyadod",
+  "Glock",
+  "0808080808",
+  "glockza@odds.team",
+  "Morchana",
+  "100001"
+);
 
 const individualInformationMap = new Map();
 
 individualInformationMap.set("glock@odds.team", ford);
+individualInformationMap.set("fameanunn@odds.team", fame);
+individualInformationMap.set("smile@odds.team", smile);
+individualInformationMap.set("tadsika@odds.team", fah);
+individualInformationMap.set("glockza@odds.team", glock);
 
 export {IndividualInformation,individualInformationMap};
