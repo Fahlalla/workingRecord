@@ -20,6 +20,7 @@ app.get("/individual-information/:email", (req, res) => {
   res.json(individualInformation);
 });
 
+
 app.get("/working-records/:email", (req, res) => {
   const email = req.params.email;
   let workingRecord = workingRecordMap.get(email);

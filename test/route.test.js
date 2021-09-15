@@ -71,4 +71,14 @@ describe("When call api path /monthly-payment/", () => {
 	});
 });
 
+describe("When call api path /individual-information", () => {
+	const email = "fameanunn@odds.team";
+	const url = `/individual-information/${email}`;
+
+	test("Response should contain individual information data", async () => {
+		const res = await request(app).get(url);
+		expect(res.statusCode).toEqual(200);
+		expect(res.text).toContain('Fame');
+	});
+});
 
