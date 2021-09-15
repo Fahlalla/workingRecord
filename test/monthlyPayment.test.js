@@ -1,6 +1,9 @@
-import { createMonthlyPayment } from "../models/index.js";
+import { IndividualInformation } from "../models/individualInformation.js";
+import {
+  validateIndividualInformation,
+  createMonthlyPayment,
+} from "../models/index.js";
 import { individualInformationMap } from "../models/individualInformation.js";
-import {IndividualInformation} from "../models/individualInformation.js";
 
 describe("test function createmonthlyPayment", () => {
   const email = "glock@odds.team";
@@ -24,11 +27,42 @@ describe("test function createmonthlyPayment", () => {
   });*/
 
 
-describe("test validate individual", () => {
-  it("validate phone number", () => {
-    const number = "1234567890";
+describe("test function validateIndividualInformation", () => {
+  const MOCK_DATA = new IndividualInformation(
+    "test",
+    "test",
+    "test",
+    "01234567890",
+    "inValid@odds.team",
+    "test",
+    "560"
+  );
 
-    expect(number).toEqual("1234567890");
+  it("Should return undefined when email invalid", () => {
+    const individualInformationWithInvalidEmail =
+      individualInformationMap.get("glock@odds.teamkkk");
+    expect(
+      validateIndividualInformation(individualInformationWithInvalidEmail)
+    ).toBe("");
   });
 
+  it("Should return complete when email valid", () => {
+    const individualInformationWithInvalidEmail =
+      individualInformationMap.get("glock@odds.team");
+    expect(
+      validateIndividualInformation(individualInformationWithInvalidEmail)
+    ).toBe("complete");
+  });
+
+  it("Should return invalid phone number when phone number invalid", () => {
+
+    individualInformationMap.set("tadsika@odds.team", MOCK_DATA);
+
+    const individualInformation =
+      individualInformationMap.get("tadsika@odds.team");
+
+    expect(validateIndividualInformation(individualInformation)).toBe(
+      "invalid phone number"
+    );
+  });
 });
