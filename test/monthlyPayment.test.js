@@ -12,10 +12,32 @@ describe("test function createmonthlyPayment", () => {
     expect(createMonthlyPayment(email)).toEqual(20979);
   });
 });
-describe("test function createmonthlyPayment", () => {  
+
+describe("test function createMonthlyPayment", () => {  
   const email = "fameanunn@odds.team";
   it("Should return transferAmount", () => {
     expect(createMonthlyPayment(email)).toEqual(10000);
+  });
+});
+
+describe("test function createMonthlyPayment", () => {
+  const email = "smile@odds.team";
+  it("Should return transferAmount", () => {
+    expect(createMonthlyPayment(email)).toEqual(12100);
+  });
+});
+
+describe("test function createMonthlyPayment", () => {
+  const email = "tadsika@odds.team";
+  it("Should return transferAmount", () => {
+    expect(createMonthlyPayment(email)).toEqual(12880);
+  });
+});
+
+describe("test function createMonthlyPayment", () => {
+  const email = "glockza@odds.team";
+  it("Should return transferAmount", () => {
+    expect(createMonthlyPayment(email)).toEqual(2200022);
   });
 });
 
