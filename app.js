@@ -30,7 +30,7 @@ app.get("/working-records/:email", (req, res) => {
 });
 
 app.get("/monthly-payment/:email", (req, res) => {
-  let monthlyPayment = createMonthlyPayment(req.params.email);
+  let monthlyPayment = transferAmount(req.params.email);
   res.json(monthlyPayment);
 });
 

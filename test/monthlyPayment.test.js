@@ -4,42 +4,44 @@ import {
   createMonthlyPayment,
 } from "../models/index.js";
 import { individualInformationMap } from "../models/individualInformation.js";
+import workingRecord, { workingRecordMap } from "../models/workingRecords.js";
 
-describe("test function createmonthlyPayment", () => {
+describe("test function createMonthlyPayment", () => {
   const email = "glock@odds.team";
-
+  let individualInformation = individualInformationMap.get(email);
+  let workingRecord = workingRecordMap.get(email);
   it("Should return transferAmount", () => {
-    expect(createMonthlyPayment(email)).toEqual(20979);
+    expect(createMonthlyPayment(individualInformation, workingRecord)).toEqual(20979);
   });
 });
 
-describe("test function createMonthlyPayment", () => {  
-  const email = "fameanunn@odds.team";
-  it("Should return transferAmount", () => {
-    expect(createMonthlyPayment(email)).toEqual(10000);
-  });
-});
+// describe("test function createMonthlyPayment", () => {  
+//   const email = "fameanunn@odds.team";
+//   it("Should return transferAmount", () => {
+//     expect(createMonthlyPayment(email)).toEqual(10000);
+//   });
+// });
 
-describe("test function createMonthlyPayment", () => {
-  const email = "smile@odds.team";
-  it("Should return transferAmount", () => {
-    expect(createMonthlyPayment(email)).toEqual(12100);
-  });
-});
+// describe("test function createMonthlyPayment", () => {
+//   const email = "smile@odds.team";
+//   it("Should return transferAmount", () => {
+//     expect(createMonthlyPayment(email)).toEqual(12100);
+//   });
+// });
 
-describe("test function createMonthlyPayment", () => {
-  const email = "tadsika@odds.team";
-  it("Should return transferAmount", () => {
-    expect(createMonthlyPayment(email)).toEqual(12880);
-  });
-});
+// describe("test function createMonthlyPayment", () => {
+//   const email = "tadsika@odds.team";
+//   it("Should return transferAmount", () => {
+//     expect(createMonthlyPayment(email)).toEqual(12880);
+//   });
+// });
 
-describe("test function createMonthlyPayment", () => {
-  const email = "glockza@odds.team";
-  it("Should return transferAmount", () => {
-    expect(createMonthlyPayment(email)).toEqual(2200022);
-  });
-});
+// describe("test function createMonthlyPayment", () => {
+//   const email = "glockza@odds.team";
+//   it("Should return transferAmount", () => {
+//     expect(createMonthlyPayment(email)).toEqual(2200022);
+//   });
+// });
 
   /*it("Should return null when invalid email", () => {
     expect(createMonthlyPayment("glock@onvrdisplaydisconnect.team")).toBe("individual information is null");

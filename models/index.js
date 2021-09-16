@@ -47,9 +47,7 @@ console.log(
   validateIndividualInformation(individualInformationMap.get("glock@odds.team"))
 );
 
-function createMonthlyPayment(email) {
-  let individualInformation = individualInformationMap.get(email);
-  let workingRecord = workingRecordMap.get(email);
+function createMonthlyPayment(individualInformation, workingRecord) {
 
   var individualInfoValidated = validateIndividualInformation(
     individualInformation
@@ -88,7 +86,7 @@ function transferAmount(email) {
     working.workingDay,
     working.submittedDate,
     working.remark,
-    createMonthlyPayment(email)
+    createMonthlyPayment(individual, working)
   );
   return result;
 }
