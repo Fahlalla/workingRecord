@@ -10,7 +10,7 @@ describe("test function createMonthlyPayment", () => {
   const email = "glock@odds.team";
   let individualInformation = individualInformationMap.get(email);
   let workingRecord = workingRecordMap.get(email);
-  it("Should return transferAmount", () => {
+  it("dailyRate = 999, workingDay = 21 should return 20979", () => {
     expect(createMonthlyPayment(individualInformation, workingRecord)).toEqual(20979);
   });
 });

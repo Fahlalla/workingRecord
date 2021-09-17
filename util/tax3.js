@@ -1,6 +1,6 @@
-function monthlySalaryAmount (dailyRate,workingDay){
-    return dailyRate*workingDay
-}
+// function monthlySalaryAmount (dailyRate,workingDay){
+//     return dailyRate*workingDay
+// }
 
 function tax3Amount (monthlySalaryAmount){
     return monthlySalaryAmount*0.03
