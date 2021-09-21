@@ -25,7 +25,7 @@ describe("When call api path /individual-information", () => {
 		const res = await request(app).get(url);
 		expect(res.statusCode).toEqual(200);
 		expect(res.text).toBe(
-			'{"name":"panudet","surname":"jitti","nickName":"Ford","phoneNumber":"1234567890","email":"glock@odds.team","site":"Saksiam","dailyRate":"999"}'
+			'{"name":"panudet","surname":"jitti","nickName":"Ford","phoneNumber":"1234567890","email":"glock@odds.team","site":"Saksiam","dailyRate":"999","accountNumber":"38475"}'
 		);
 	});
 });
@@ -63,7 +63,7 @@ describe("When call api path /monthly-payment/", () => {
 	it("Should return response contain monthlyPayment", async () => {
 		const res = await request(app).get(url);
 		expect(res.text).toBe(
-			'{"name":"panudet","surname":"jitti","nickName":"Ford","email":"glock@odds.team","accountNumber":"2452453654645","dailyRate":"999","workingDay":"21","transferAmount":20979,"submittedDate":"11/11/2021","remark":"100"}'
+			'{"name":"panudet","surname":"jitti","nickName":"Ford","email":"glock@odds.team","accountNumber":"38475","dailyRate":"999","workingDay":"21","transferAmount":20979,"submittedDate":"11/11/2021","remark":"100"}'
 		);
 	});
 

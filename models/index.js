@@ -90,7 +90,7 @@ function transferAmount(email) {
     individual.surname,
     individual.nickName,
     individual.email,
-    "2452453654645",
+    individual.accountNumber,
     individual.telephoneNumber,
     individual.dailyRate,
     working.workingDay,

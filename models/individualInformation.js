@@ -1,5 +1,5 @@
 export default class IndividualInformation {
-  constructor(name, surname, nickName, telephoneNumber, email, site, dailyRate) {
+  constructor(name, surname, nickName, telephoneNumber, email, site, dailyRate, accountNumber) {
     this.name = name;
     this.surname = surname;
     this.nickName = nickName;
@@ -7,6 +7,7 @@ export default class IndividualInformation {
     this.email = email;
     this.site = site;
     this.dailyRate = dailyRate;
+    this.accountNumber = accountNumber;
   }
 };
 const ford = new IndividualInformation(
@@ -16,7 +17,8 @@ const ford = new IndividualInformation(
   "1234567890",
   "glock@odds.team",
   "Saksiam",
-  "999"
+  "999",
+  "38475"
 );
 const fame = new IndividualInformation(
   "Anuntasupt",
@@ -25,7 +27,8 @@ const fame = new IndividualInformation(
   "0808008080",
   "fameanunn@odds.team",
   "Morchana",
-  "500"
+  "500",
+  "6789"
 );
 
 const smile = new IndividualInformation(
@@ -35,7 +38,8 @@ const smile = new IndividualInformation(
   "0808008081",
   "smile@odds.team",
   "Morchana",
-  "550"
+  "550",
+  "0987"
 );
 
 const fah = new IndividualInformation(
@@ -45,7 +49,8 @@ const fah = new IndividualInformation(
   "0808008082",
   "tadsika@odds.team",
   "saksiam",
-  "560"
+  "560",
+  "1234"
 );
 const glock = new IndividualInformation(
   "boonyarid",
@@ -54,7 +59,8 @@ const glock = new IndividualInformation(
   "0808080808",
   "glockza@odds.team",
   "Morchana",
-  "100001"
+  "100001",
+  "2452453654645"
 );
 
 const individualInformationMap = new Map();
