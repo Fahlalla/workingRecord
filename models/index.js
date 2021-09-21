@@ -89,13 +89,14 @@ function transferAmount(email) {
     individual.name,
     individual.surname,
     individual.nickName,
-    individual.accountNumber,
+    individual.email,
+    "2452453654645",
     individual.telephoneNumber,
     individual.dailyRate,
     working.workingDay,
+    createMonthlyPayment(individual, working),
     working.submittedDate,
     working.remark,
-    createMonthlyPayment(individual, working)
   );
   return result;
 }

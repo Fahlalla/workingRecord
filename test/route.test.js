@@ -60,9 +60,11 @@ describe("When call api path /monthly-payment/", () => {
 		expect(res.statusCode).toEqual(200);
 	});
 
-	it("Should return response contain createMonthlyPayment", async () => {
+	it("Should return response contain monthlyPayment", async () => {
 		const res = await request(app).get(url);
-		expect(res.text).toContain("20979");
+		expect(res.text).toBe(
+			'{"name":"panudet","surname":"jitti","nickName":"Ford","email":"glock@odds.team","accountNumber":"2452453654645","dailyRate":"999","workingDay":"21","transferAmount":20979,"submittedDate":"11/11/2021","remark":"100"}'
+		);
 	});
 
 	it("Should fail when call api path without email", async () => {
