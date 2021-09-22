@@ -84,7 +84,6 @@ function createMonthlyPayment(individualInformation, workingRecord) {
 function transferAmount(email) {
   let individual = individualInformationMap.get(email);
   let working = workingRecordMap.get(email);
-
   const result = new monthlyPayment(
     individual.name,
     individual.surname,
@@ -101,4 +100,4 @@ function transferAmount(email) {
   return result;
 }
 
-export { validateIndividualInformation, createMonthlyPayment, transferAmount };
+export { validateIndividualInformation, createMonthlyPayment,transferAmount };
