@@ -100,4 +100,5 @@ function transferAmount(email) {
   return result;
 }
 
-export { validateIndividualInformation, createMonthlyPayment,transferAmount };
+
+export { validateIndividualInformation, createMonthlyPayment, transferAmount };
