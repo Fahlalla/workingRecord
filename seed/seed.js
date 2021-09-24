@@ -24,7 +24,7 @@ const workingRecordSchema = new Schema({
 const individualInformationModel = mongoose.model('IndividualInformation', individualInformationSchema);
 const workingRecordModel = mongoose.model('WorkingRecord', workingRecordSchema);
 
-await mongoose.connect('mongodb://localhost:27017/individual-information');
+await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
 
 const workingRecordData = JSON.parse(
   fs.readFileSync('./data/workingRecords.json', 'utf-8')
