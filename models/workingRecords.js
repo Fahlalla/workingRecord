@@ -1,3 +1,6 @@
+import mongoose from "mongoose";
+const { Schema } = mongoose;
+
 export default class WorkingRecord {
   constructor(email, workingDay, submittedDate, site, remark) {
     this.email = email;
@@ -55,4 +58,12 @@ workingRecordMap.set("smile@odds.team", smile);
 workingRecordMap.set("tadsika@odds.team", fah);
 workingRecordMap.set("glockza@odds.team", glock);
 
-export { workingRecordMap };
+const workingRecordSchema = new Schema({
+  email: String,
+  workingDay: String,
+  submittedDate: String,
+  site: String,
+  remark: String
+})
+
+export { workingRecordMap, workingRecordSchema};

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
+import { workingRecordSchema } from '../models/workingRecords.js';
 
 const individualInformationSchema = new Schema({
   name: String,
@@ -11,14 +12,6 @@ const individualInformationSchema = new Schema({
   site: String,
   dailyRate: String,
   accountNumber: String
-})
-
-const workingRecordSchema = new Schema({
-  email: String,
-  workingDay: String,
-  submittedDate: String,
-  site: String,
-  remark: String
 })
 
 const individualInformationModel = mongoose.model('IndividualInformation', individualInformationSchema);

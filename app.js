@@ -1,6 +1,7 @@
 import express from "express";
+import mongoose from "mongoose";
 import { individualInformationMap } from "./models/individualInformation.js";
-import { workingRecordMap } from "./models/workingRecords.js";
+import { workingRecordMap, workingRecordSchema } from "./models/workingRecords.js";
 import { createMonthlyPayment, transferAmount } from "./models/index.js";
 
 
@@ -23,12 +24,16 @@ app.get("/individual-information/:email", (req, res) => {
 });
 
 
-app.get("/working-records/:email", (req, res) => {
+app.get("/working-records/:email", async (req, res) => {
   const email = req.params.email;
-  let workingRecord = workingRecordMap.get(email);
-  if(workingRecord == undefined)
+
+  var conn = await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
+  const workingRecordsModel = conn.model('workingRecords', workingRecordSchema);
+  const result = await workingRecordsModel.findOne({email: email});
+
+  if(result == undefined)
     return res.status(404).json('Working record not found');
-  return res.status(200).json(workingRecord);
+  return res.status(200).json(result);
 });
 
 app.get("/monthly-payment/:email", (req, res) => {
