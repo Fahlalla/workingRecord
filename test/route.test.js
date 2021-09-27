@@ -31,6 +31,9 @@ describe("When call api path /individual-information", () => {
 });
 
 describe("When call api path /working-records", () => {
+	afterEach(async () => {
+		await server.close();
+	});
 	const email = "glock@odds.team";
 	const url = `/working-records/${email}`;
 	const urlWithOutEmail = "/working-records/";
@@ -51,6 +54,9 @@ describe("When call api path /working-records", () => {
 });
 
 describe("When call api path /monthly-payment/", () => {
+	afterEach(async () => {
+		await server.close();
+	});
 	const email = "glock@odds.team";
 	const url = `/monthly-payment/${email}`;
 	const urlWithOutEmail = "/monthly-payment/";
@@ -74,6 +80,9 @@ describe("When call api path /monthly-payment/", () => {
 });
 
 describe("When call api path /individual-information", () => {
+	afterEach(async () => {
+		await server.close();
+	});
 	const email = "fameanunn@odds.team";
 	const url = `/individual-information/${email}`;
 
