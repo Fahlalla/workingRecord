@@ -1,6 +1,7 @@
 import { individualInformationMap } from "./individualInformation.js";
 import { workingRecordMap } from "./workingRecords.js";
 import { monthlyPayment } from "./monthlyPayment.js";
+import mongoose from "mongoose";
 
 const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 const isValidPhoneNumber = /^\d{10}$/;
@@ -100,5 +101,9 @@ function transferAmount(email) {
   return result;
 }
 
+async function connectDB() {
+  return await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
+}
 
-export { validateIndividualInformation, createMonthlyPayment, transferAmount };
+
+export { validateIndividualInformation, createMonthlyPayment, transferAmount, connectDB};

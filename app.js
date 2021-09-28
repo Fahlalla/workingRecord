@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { individualInformationMap } from "./models/individualInformation.js";
 import { workingRecordMap, workingRecordSchema } from "./models/workingRecords.js";
-import { createMonthlyPayment, transferAmount } from "./models/index.js";
+import { createMonthlyPayment, transferAmount, connectDB } from "./models/index.js";
 
 
 const app = express();
@@ -12,10 +12,14 @@ app.get("/", (req, res) => {
   res.status(200).send("Hello World!");
 });
 
-
-const server = app.listen(port,  () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+let conn;
+const server = connectDB().then((dbConn) => {
+  conn = dbConn;
+}).then(() => {
+  app.listen(port,  () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+  })  
+})
 
 app.get("/individual-information/:email", (req, res) => {
   const email = req.params.email
@@ -26,8 +30,6 @@ app.get("/individual-information/:email", (req, res) => {
 
 app.get("/working-records/:email", async (req, res) => {
   const email = req.params.email;
-
-  var conn = await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
   const workingRecordsModel = conn.model('workingRecords', workingRecordSchema);
   const result = await workingRecordsModel.findOne({email: email});
 
