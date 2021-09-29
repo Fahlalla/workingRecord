@@ -8,25 +8,23 @@ import { createMonthlyPayment, transferAmount, connectDB } from "./models/index.
 const app = express();
 const port = 3000;
 
+const conn = await connectDB().then((con) => {
+  return con;
+});
+
+const server = app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+})
+
 app.get("/", (req, res) => {
   res.status(200).send("Hello World!");
 });
-
-let conn;
-const server = connectDB().then((dbConn) => {
-  conn = dbConn;
-}).then(() => {
-  app.listen(port,  () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-  })  
-})
 
 app.get("/individual-information/:email", (req, res) => {
   const email = req.params.email
   let individualInformation = individualInformationMap.get(req.params.email);
   res.json(individualInformation);
 });
-
 
 app.get("/working-records/:email", async (req, res) => {
   const email = req.params.email;
