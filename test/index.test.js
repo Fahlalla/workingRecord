@@ -1,11 +1,18 @@
 import { app, server } from "../app.js";
 import supertest from "supertest";
+import { DBManager } from "../helper/mongoMemoryServer.js";
 
 describe("ทดสอบการใช้งาน api /monthly-payment", () => {
+  const dbman = new DBManager();
+
+  beforeAll(async () => await dbman.start());
+  afterAll(async () => await dbman.stop());
   afterEach(async () => {
-		await server.close();
-	});
+    dbman.cleanup();
+    await server.close();
+  });
   const email = "glock@odds.team";
+
   it("Should return transferAmount result", () => {
         supertest(app)
       .get(`/monthly-payment/${email}`)

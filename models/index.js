@@ -2,6 +2,7 @@ import { individualInformationMap } from "./individualInformation.js";
 import { workingRecordMap } from "./workingRecords.js";
 import { monthlyPayment } from "./monthlyPayment.js";
 import mongoose from "mongoose";
+import { DBManager } from "../helper/mongoMemoryServer.js";
 
 const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 const isValidPhoneNumber = /^\d{10}$/;
@@ -102,7 +103,12 @@ function transferAmount(email) {
 }
 
 async function connectDB() {
-  return await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
+  if (process.env.NODE_ENV !== 'TEST') {
+    // const dbman = new DBManager();
+    // await dbman.start();
+    // return dbman.connection;
+    return await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
+  }
 }
 
 

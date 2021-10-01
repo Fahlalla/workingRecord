@@ -5,7 +5,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "mon": "nodemon --exec  \"npm run test\"",
+    "mon": "nodemon --exec  \"NODE_ENV='TEST' npm run test\"",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Fahlalla/workingRecord#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongodb-memory-server": "^7.4.1",
     "mongoose": "^6.0.7"
   },
   "devDependencies": {
