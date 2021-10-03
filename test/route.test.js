@@ -1,20 +1,13 @@
 import request from "supertest";
 import { app, server, receiver, setIndividualInformationMap} from "../app.js";
-import { DBManager } from "../helper/mongoMemoryServer.js";
-import { IndividualInformation } from '../models/individualInformation.js';
+import { start, stop } from "../helper/mongoMemoryServer.js";
 
 describe("Post Endpoints", () => {
-  const dbman = new DBManager();
-
-  beforeAll(async () => await dbman.start());
-  afterAll(async () => await dbman.stop());
   afterEach(async () => {
-    dbman.cleanup();
-    await server.close();
+    server.close();
   });
   it("should return 200 for root", async () => {
-    receiver("roof");
-    
+    // receiver("roof");
     const res = await request(app).get("/").send();
     expect(res.statusCode).toEqual(200);
   });
@@ -27,31 +20,11 @@ describe("Post Endpoints", () => {
 });
 
 describe("When call api path /individual-information", () => {
-  const dbman = new DBManager();
-  const glock = new IndividualInformation(
-    "glockMock",
-    "glockMock",
-    "glockMock",
-    "0808080808",
-    "glockza@odds.team",
-    "Morchana",
-    "100001",
-    "2452453654645"
-  );
-  const map = new Map();
-  map.set("glock@odds.team", glock);
-  setIndividualInformationMap(map)
-  
+  afterEach(async () => {
+    server.close();
+  });
   const email = "glock@odds.team";
   const url = `/individual-information/${email}`;
-
-  // beforeAll(async () => await dbman.start());
-  // afterAll(async () => await dbman.stop());
-  afterEach(async () => {
-    // dbman.cleanup();
-    await server.close();
-  });
-
   test("Response should contain individual information data", async () => {
     const res = await request(app).get(url);
     expect(res.statusCode).toEqual(200);
@@ -62,12 +35,9 @@ describe("When call api path /individual-information", () => {
 });
 
 describe("When call api path /working-records", () => {
-  const dbman = new DBManager();
-
-  beforeAll(async () => await dbman.start());
-  afterAll(async () => await dbman.stop());
+  // beforeAll(async () => await start());
+  afterAll(async () => await stop());
   afterEach(async () => {
-    dbman.cleanup();
     await server.close();
   });
   const email = "glock@odds.team";
@@ -90,12 +60,7 @@ describe("When call api path /working-records", () => {
 });
 
 describe("When call api path /monthly-payment/", () => {
-  const dbman = new DBManager();
-
-  beforeAll(async () => await dbman.start());
-  afterAll(async () => await dbman.stop());
   afterEach(async () => {
-    dbman.cleanup();
     await server.close();
   });
   const email = "glock@odds.team";
@@ -121,12 +86,7 @@ describe("When call api path /monthly-payment/", () => {
 });
 
 describe("When call api path /individual-information", () => {
-  const dbman = new DBManager();
-
-  beforeAll(async () => await dbman.start());
-  afterAll(async () => await dbman.stop());
   afterEach(async () => {
-    dbman.cleanup();
     await server.close();
   });
   const email = "fameanunn@odds.team";

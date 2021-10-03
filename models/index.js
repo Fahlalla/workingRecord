@@ -2,7 +2,7 @@ import { individualInformationMap } from "./individualInformation.js";
 import { workingRecordMap } from "./workingRecords.js";
 import { monthlyPayment } from "./monthlyPayment.js";
 import mongoose from "mongoose";
-import { DBManager } from "../helper/mongoMemoryServer.js";
+import { start } from "../helper/mongoMemoryServer.js";
 
 const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 const isValidPhoneNumber = /^\d{10}$/;
@@ -54,9 +54,6 @@ function validateWorkingRecord(workingRecord) {
   return "complete";
 }
 
-console.log(
-  validateIndividualInformation(individualInformationMap.get("glock@odds.team"))
-);
 
 function createMonthlyPayment(individualInformation, workingRecord) {
 
@@ -103,12 +100,10 @@ function transferAmount(email) {
 }
 
 async function connectDB() {
-  if (process.env.NODE_ENV !== 'TEST') {
-    // const dbman = new DBManager();
-    // await dbman.start();
-    // return dbman.connection;
-    return await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
+  if (process.env.NODE_ENV === 'TEST') {
+    return start();
   }
+  return await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
 }
 
 
