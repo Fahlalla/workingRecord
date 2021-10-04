@@ -26,7 +26,7 @@ const setWorkingRecordMap = (value) => {
   return workingRecordMapTemp = value;
 }
 
-const getByEmail = async (email) => {
+const getByEmail = (email) => {
   if (process.env.NODE_ENV === undefined) {
     return workingRecordMapTemp.findOne({ email: email });
   }
