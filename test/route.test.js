@@ -1,10 +1,11 @@
 import request from "supertest";
-import { app, server, receiver, setIndividualInformationMap} from "../app.js";
+import { app, server, receiver, setWorkingRecordMap} from "../app.js";
 import { start, stop } from "../helper/mongoMemoryServer.js";
+import { workingRecordMap } from "../models/workingRecords.js"
 
 describe("Post Endpoints", () => {
   afterEach(async () => {
-    server.close();
+    await server.close();
   });
   it("should return 200 for root", async () => {
     // receiver("roof");
@@ -21,7 +22,7 @@ describe("Post Endpoints", () => {
 
 describe("When call api path /individual-information", () => {
   afterEach(async () => {
-    server.close();
+    await server.close();
   });
   const email = "glock@odds.team";
   const url = `/individual-information/${email}`;
@@ -43,11 +44,13 @@ describe("When call api path /working-records", () => {
   const email = "glock@odds.team";
   const url = `/working-records/${email}`;
   const urlWithOutEmail = "/working-records/";
+  setWorkingRecordMap(workingRecordMap);
 
   it("Should return response status 200", async () => {
     const res = await request(app).get(url);
     expect(res.statusCode).toEqual(200);
   });
+
   it("Should return response contain workingDay", async () => {
     const res = await request(app).get(url);
     expect(res.text).toContain("workingDay");
