@@ -1,6 +1,5 @@
 import request from "supertest";
-import { app, server, receiver, setWorkingRecordMap} from "../app.js";
-import { start, stop } from "../helper/mongoMemoryServer.js";
+import { app, server, setWorkingRecordMap} from "../app.js";
 import { workingRecordMap } from "../models/workingRecords.js"
 
 describe("Post Endpoints", () => {
@@ -36,8 +35,6 @@ describe("When call api path /individual-information", () => {
 });
 
 describe("When call api path /working-records", () => {
-  // beforeAll(async () => await start());
-  afterAll(async () => await stop());
   afterEach(async () => {
     await server.close();
   });
