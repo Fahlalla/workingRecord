@@ -13,7 +13,10 @@ app.get("/", (req, res) => {
 app.get("/individual-information/:email", (req, res) => {
   const email = req.params.email;
   const result = getIndividualInformationByEmail(email);
-  return res.json(result);
+
+  if(result == undefined)
+    return res.status(404).json('Individual Information not found');
+  return res.status(200).json(result);
 });
 
 app.get("/working-records/:email", async (req, res) => {
@@ -21,7 +24,7 @@ app.get("/working-records/:email", async (req, res) => {
   const result = await getWorkingRecordByEmail(email);
 
   if(result == undefined)
-    return res.status(404).json('Working record not found');
+    return res.status(404).json('Working Record not found');
   return res.status(200).json(result);
 });
 

@@ -3,12 +3,20 @@ const { Schema } = mongoose;
 import { connectDB } from "./index.js";
 
 export default class WorkingRecord {
-  constructor(email, workingDay, submittedDate, site, remark) {
+  constructor(
+    email,
+    workingDay,
+    submittedDate,
+    site,
+    remark,
+    team,
+    ) {
     this.email = email;
     this.workingDay = workingDay;
     this.submittedDate = submittedDate;
     this.site = site;
     this.remark = remark;
+    this.team = team;
   }
 }
 const ford = new WorkingRecord(
@@ -64,15 +72,14 @@ const workingRecordSchema = new Schema({
   workingDay: String,
   submittedDate: String,
   site: String,
-  remark: String
-})
-
+  remark: String,
+});
 
 const getWorkingRecord = await connectDB().then((con) => {
-  if (process.env.NODE_ENV !== 'TEST') {
-    return con.model('workingRecords', workingRecordSchema);
+  if (process.env.NODE_ENV !== "TEST") {
+    return con.model("workingRecords", workingRecordSchema);
   }
   return workingRecordMap;
 });
 
-export { workingRecordMap, workingRecordSchema, getWorkingRecord};
+export { workingRecordMap, workingRecordSchema, getWorkingRecord };

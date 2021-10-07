@@ -1,5 +1,20 @@
 export default class IndividualInformation {
-  constructor(name, surname, nickName, telephoneNumber, email, site, dailyRate, accountNumber) {
+  constructor(
+    name,
+    surname,
+    nickName,
+    telephoneNumber,
+    email,
+    site,
+    dailyRate,
+    accountNumber,
+    idCard,
+    birthDate,
+    address,
+    discordAccount,
+    suggestBy,
+
+  ) {
     this.name = name;
     this.surname = surname;
     this.nickName = nickName;
@@ -8,8 +23,13 @@ export default class IndividualInformation {
     this.site = site;
     this.dailyRate = dailyRate;
     this.accountNumber = accountNumber;
+    this.idCard = idCard;
+    this.birthDate = birthDate;
+    this.address = address;
+    this.discordAccount = discordAccount;
+    this.suggestBy = suggestBy;
   }
-};
+}
 const ford = new IndividualInformation(
   "panudet",
   "jitti",
@@ -71,4 +91,4 @@ individualInformationMap.set("smile@odds.team", smile);
 individualInformationMap.set("tadsika@odds.team", fah);
 individualInformationMap.set("glockza@odds.team", glock);
 
-export {IndividualInformation,individualInformationMap};
+export { IndividualInformation, individualInformationMap };

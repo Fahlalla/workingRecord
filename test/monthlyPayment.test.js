@@ -1,7 +1,7 @@
-import { IndividualInformation } from "../models/individualInformation.js";
+import { IndividualInformation } from "../models/individualInformationModel.js";
 import { validateIndividualInformation, createMonthlyPayment } from "../models/index.js";
-import { individualInformationMap } from "../models/individualInformation.js";
-import { workingRecordMap } from "../models/workingRecords.js";
+import { individualInformationMap } from "../models/individualInformationModel.js";
+import { workingRecordMap } from "../models/workingRecordsModel.js";
 
 describe("test function createMonthlyPayment", () => {
   const email = "glock@odds.team";
@@ -11,38 +11,6 @@ describe("test function createMonthlyPayment", () => {
     expect(createMonthlyPayment(individualInformation, workingRecord)).toEqual(20979);
   });
 });
-
-// describe("test function createMonthlyPayment", () => {  
-//   const email = "fameanunn@odds.team";
-//   it("Should return transferAmount", () => {
-//     expect(createMonthlyPayment(email)).toEqual(10000);
-//   });
-// });
-
-// describe("test function createMonthlyPayment", () => {
-//   const email = "smile@odds.team";
-//   it("Should return transferAmount", () => {
-//     expect(createMonthlyPayment(email)).toEqual(12100);
-//   });
-// });
-
-// describe("test function createMonthlyPayment", () => {
-//   const email = "tadsika@odds.team";
-//   it("Should return transferAmount", () => {
-//     expect(createMonthlyPayment(email)).toEqual(12880);
-//   });
-// });
-
-// describe("test function createMonthlyPayment", () => {
-//   const email = "glockza@odds.team";
-//   it("Should return transferAmount", () => {
-//     expect(createMonthlyPayment(email)).toEqual(2200022);
-//   });
-// });
-
-  /*it("Should return null when invalid email", () => {
-    expect(createMonthlyPayment("glock@onvrdisplaydisconnect.team")).toBe("individual information is null");
-  });*/
 
 describe("test function validateIndividualInformation", () => {
   it("Should return undefined when email invalid", () => {

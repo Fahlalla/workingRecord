@@ -1,7 +1,7 @@
 import fs from 'fs';
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
-import { workingRecordSchema } from '../models/workingRecords.js';
+import { workingRecordSchema } from '../models/workingRecordsModel.js';
 
 const individualInformationSchema = new Schema({
   name: String,

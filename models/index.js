@@ -1,7 +1,7 @@
-import { individualInformationMap } from "./individualInformation.js";
-import { monthlyPayment } from "./monthlyPayment.js";
+import { individualInformationMap } from "./individualInformationModel.js";
+import { monthlyPayment } from "./monthlyPaymentModel.js";
 import mongoose from "mongoose";
-import { workingRecordMap } from "./workingRecords.js";
+import { workingRecordMap } from "./workingRecordsModel.js";
 
 
 const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
