@@ -1,30 +1,15 @@
 import express from "express";
 import { individualInformationMap } from "./models/individualInformation.js";
-import { workingRecordSchema } from "./models/workingRecords.js";
-import { transferAmount, connectDB } from "./models/index.js";
+import { transferAmount, getWorkingRecord } from "./models/index.js";
 
 const app = express();
 const port = 3000;
 
-const conn = await connectDB().then((con) => {
-  return con;
-});
-
-let workingRecordMapTemp;
-
-const setWorkingRecordMap = (value) => {
-  if (value === null) {
-    const workingRecordsModel = conn.model('workingRecords', workingRecordSchema);
-    return workingRecordMapTemp = workingRecordsModel;
-  }
-  return workingRecordMapTemp = value;
-}
-
 const getByEmail = (email) => {
-  if (process.env.NODE_ENV === undefined) {
-    return workingRecordMapTemp.findOne({ email: email });
+  if (process.env.NODE_ENV !== "TEST") {
+    return getWorkingRecord.findOne({ email: email });
   }
-  return workingRecordMapTemp.get(email);
+  return getWorkingRecord.get(email);
 }
 
 app.get("/", (req, res) => {
@@ -53,9 +38,7 @@ app.get("/monthly-payment/:email", (req, res) => {
 });
 
 const server = app.listen(port, () => {
-  if (process.env.NODE_ENV !== "TEST")
-    setWorkingRecordMap(null);
   return console.log(`Example app listening at http://localhost:${port}`);
 });
 
-export {app, server, setWorkingRecordMap}
+export {app, server}

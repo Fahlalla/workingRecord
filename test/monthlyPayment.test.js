@@ -1,10 +1,7 @@
 import { IndividualInformation } from "../models/individualInformation.js";
-import {
-  validateIndividualInformation,
-  createMonthlyPayment,
-} from "../models/index.js";
+import { validateIndividualInformation, createMonthlyPayment } from "../models/index.js";
 import { individualInformationMap } from "../models/individualInformation.js";
-import workingRecord, { workingRecordMap } from "../models/workingRecords.js";
+import { workingRecordMap } from "../models/workingRecords.js";
 
 describe("test function createMonthlyPayment", () => {
   const email = "glock@odds.team";

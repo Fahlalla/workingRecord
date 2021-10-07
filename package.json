@@ -5,8 +5,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "mon": "nodemon --exec  \"NODE_ENV='TEST' npm run test\"",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest"
+    "mon": "nodemon --exec  \"npm run test\"",
+    "test": "NODE_ENV='TEST' node --experimental-vm-modules node_modules/jest/bin/jest"
   },
   "repository": {
     "type": "git",

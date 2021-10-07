@@ -1,13 +1,12 @@
 import request from "supertest";
-import { app, server, setWorkingRecordMap} from "../app.js";
-import { workingRecordMap } from "../models/workingRecords.js"
+import { app, server } from "../app.js";
 
 describe("Post Endpoints", () => {
+
   afterEach(async () => {
     await server.close();
   });
   it("should return 200 for root", async () => {
-    // receiver("roof");
     const res = await request(app).get("/").send();
     expect(res.statusCode).toEqual(200);
   });
@@ -41,7 +40,6 @@ describe("When call api path /working-records", () => {
   const email = "glock@odds.team";
   const url = `/working-records/${email}`;
   const urlWithOutEmail = "/working-records/";
-  setWorkingRecordMap(workingRecordMap);
 
   it("Should return response status 200", async () => {
     const res = await request(app).get(url);

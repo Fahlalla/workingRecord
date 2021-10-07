@@ -2,7 +2,9 @@ import { app, server } from "../app.js";
 import supertest from "supertest";
 
 describe("ทดสอบการใช้งาน api /monthly-payment", () => {
-  afterAll(() => server.close());
+  afterEach(async () => {
+    await server.close();
+  });
   const email = "glock@odds.team";
 
   it("Should return transferAmount result", async () => {

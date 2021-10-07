@@ -1,8 +1,8 @@
 import { individualInformationMap } from "./individualInformation.js";
-import { workingRecordMap } from "./workingRecords.js";
 import { monthlyPayment } from "./monthlyPayment.js";
 import mongoose from "mongoose";
-import { start } from "../helper/mongoMemoryServer.js";
+import { workingRecordSchema } from "./workingRecords.js";
+import { workingRecordMap } from "../models/workingRecords.js"
 
 const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 const isValidPhoneNumber = /^\d{10}$/;
@@ -100,11 +100,16 @@ function transferAmount(email) {
 }
 
 async function connectDB() {
-  if (process.env.NODE_ENV === 'TEST') {
-    return start();
+  if (process.env.NODE_ENV !== 'TEST') {
+    return await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
   }
-  return await mongoose.connect('mongodb://root:example@localhost:27017/working-record?authSource=admin');
 }
 
+const getWorkingRecord = await connectDB().then((con) => {
+  if (process.env.NODE_ENV !== 'TEST') {
+    return con.model('workingRecords', workingRecordSchema);
+  }
+  return workingRecordMap;
+});
 
-export { validateIndividualInformation, createMonthlyPayment, transferAmount, connectDB};
+export { validateIndividualInformation, createMonthlyPayment, transferAmount, getWorkingRecord};
