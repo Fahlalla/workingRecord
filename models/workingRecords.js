@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
+import { connectDB } from "./index.js";
 
 export default class WorkingRecord {
   constructor(email, workingDay, submittedDate, site, remark) {
@@ -66,4 +67,12 @@ const workingRecordSchema = new Schema({
   remark: String
 })
 
-export { workingRecordMap, workingRecordSchema};
+
+const getWorkingRecord = await connectDB().then((con) => {
+  if (process.env.NODE_ENV !== 'TEST') {
+    return con.model('workingRecords', workingRecordSchema);
+  }
+  return workingRecordMap;
+});
+
+export { workingRecordMap, workingRecordSchema, getWorkingRecord};

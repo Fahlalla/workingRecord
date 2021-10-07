@@ -1,4 +1,4 @@
-import { getWorkingRecord } from "../models";
+import { getWorkingRecord } from "../models/workingRecords.js";
 
 const getWorkingRecordByEmail = (email) => {
   if (process.env.NODE_ENV !== "TEST") {

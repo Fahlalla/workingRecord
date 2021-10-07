@@ -1,8 +1,8 @@
 import { individualInformationMap } from "./individualInformation.js";
 import { monthlyPayment } from "./monthlyPayment.js";
 import mongoose from "mongoose";
-import { workingRecordSchema } from "./workingRecords.js";
-import { workingRecordMap } from "../models/workingRecords.js"
+import { workingRecordMap } from "./workingRecords.js";
+
 
 const isValidEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
 const isValidPhoneNumber = /^\d{10}$/;
@@ -67,11 +67,4 @@ async function connectDB() {
   }
 }
 
-const getWorkingRecord = await connectDB().then((con) => {
-  if (process.env.NODE_ENV !== 'TEST') {
-    return con.model('workingRecords', workingRecordSchema);
-  }
-  return workingRecordMap;
-});
-
-export { validateIndividualInformation, createMonthlyPayment, transferAmount, getWorkingRecord};
+export { validateIndividualInformation, createMonthlyPayment, transferAmount, connectDB};
