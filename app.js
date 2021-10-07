@@ -1,16 +1,10 @@
 import express from "express";
-import { individualInformationMap } from "./models/individualInformation.js";
-import { transferAmount, getWorkingRecord } from "./models/index.js";
+import { transferAmount } from "./models/index.js";
+import { getWorkingRecordByEmail } from "./services/workingRecordService.js";
+import { getIndividualInformationByEmail } from "./services/individualInformationService.js";
 
 const app = express();
 const port = 3000;
-
-const getByEmail = (email) => {
-  if (process.env.NODE_ENV !== "TEST") {
-    return getWorkingRecord.findOne({ email: email });
-  }
-  return getWorkingRecord.get(email);
-}
 
 app.get("/", (req, res) => {
   return res.status(200).send("Hello World!");
@@ -18,13 +12,13 @@ app.get("/", (req, res) => {
 
 app.get("/individual-information/:email", (req, res) => {
   const email = req.params.email;
-  let individualInformation = individualInformationMap.get(email);
-  return res.json(individualInformation);
+  const result = getIndividualInformationByEmail(email);
+  return res.json(result);
 });
 
 app.get("/working-records/:email", async (req, res) => {
   const email = req.params.email;
-  const result = await getByEmail(email);
+  const result = await getWorkingRecordByEmail(email);
 
   if(result == undefined)
     return res.status(404).json('Working record not found');

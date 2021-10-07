@@ -12,71 +12,33 @@ function validateIndividualInformation(individualInformation) {
     return "";
   }
 
-  // validate email
   if (!isValidEmail.test(individualInformation.email)) {
     return "invalid email";
   }
 
-  // validate number equals 10
   if (!isValidPhoneNumber.test(individualInformation.phoneNumber)) {
     return "invalid phone number";
   }
 
-  // validate dailyRate more than 0
   const isValidDailyRate = parseInt(individualInformation.dailyRate) > 0;
   if (!isValidDailyRate) {
     return "invalid daily rate";
   }
-
   return "complete";
 }
 
 function validateWorkingRecord(workingRecord) {
-  // validate email
   if (!isValidEmail.test(workingRecord.email)) {
     return "invalid email";
   }
-
-  // validate workingDay more than 0
   const isValidWorkingDay = parseInt(workingRecord.workingDay) < 0;
   if (!isValidWorkingDay) {
     return "invalid working day";
   }
-
-  // if (parseInt(workingRecord.workingDay) > 31) {
-  //   return "วันทำงานเกิน";
-  // }
-
-  // if (workingRecord.workingDay == null) {
-  //   return "working = null";
-  // }
-  
   return "complete";
 }
 
-
 function createMonthlyPayment(individualInformation, workingRecord) {
-
-  // var individualInfoValidated = validateIndividualInformation(
-  //   individualInformation
-  // );
-  // var workingRecordValidated = validateWorkingRecord(workingRecord);
-
-  // if (individualInfoValidated == null) {
-  //   return "individual information is null";
-  // }
-
-  // if (workingRecordValidated == null) {
-  //   return "working record information is null";
-  // }
-
-  // if (parseInt(workingRecord.workingDay) > 31) {
-  //   return "วันทำงานเกิน";
-  // }
-
-  // if (workingRecord.workingDay == null) {
-  //   return "working = null";
-  // }
   return individualInformation.dailyRate * workingRecord.workingDay;
 }
 
