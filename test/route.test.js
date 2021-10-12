@@ -2,16 +2,13 @@ import request from "supertest";
 import { app, server } from "../app.js";
 
 describe("Post Endpoints", () => {
-
-  afterEach(async () => {
-    await server.close();
-  });
+  afterEach(() => { server.close() });
   it("should return 200 for root", async () => {
     const res = await request(app).get("/").send();
     expect(res.statusCode).toEqual(200);
   });
   
-  test("api path / should be return hello world", async () => {
+  it("api path / should be return hello world", async () => {
     const res = await request(app).get("/");
     expect(res.statusCode).toEqual(200);
     expect(res.text).toBe("Hello World!");
@@ -19,12 +16,10 @@ describe("Post Endpoints", () => {
 });
 
 describe("When call api path /individual-information", () => {
-  afterEach(async () => {
-    await server.close();
-  });
+  afterEach(() => { server.close() });
   const email = "glock@odds.team";
   const url = `/individual-information/${email}`;
-  test("Response should contain individual information data", async () => {
+  it("Response should contain individual information data", async () => {
     const res = await request(app).get(url);
     expect(res.statusCode).toEqual(200);
     expect(res.text).toBe(
@@ -34,9 +29,7 @@ describe("When call api path /individual-information", () => {
 });
 
 describe("When call api path /working-records", () => {
-  afterEach(async () => {
-    await server.close();
-  });
+  afterEach(() => { server.close() });
   const email = "glock@odds.team";
   const url = `/working-records/${email}`;
   const urlWithOutEmail = "/working-records/";
@@ -58,9 +51,7 @@ describe("When call api path /working-records", () => {
 });
 
 describe("When call api path /monthly-payment/", () => {
-  afterEach(async () => {
-    await server.close();
-  });
+  afterEach(() => { server.close() });
   const email = "glock@odds.team";
   const url = `/monthly-payment/${email}`;
   const urlWithOutEmail = "/monthly-payment/";
@@ -84,13 +75,11 @@ describe("When call api path /monthly-payment/", () => {
 });
 
 describe("When call api path /individual-information", () => {
-  afterEach(async () => {
-    await server.close();
-  });
+  afterEach(() => { server.close() });
   const email = "fameanunn@odds.team";
   const url = `/individual-information/${email}`;
 
-  test("Response should contain individual information data", async () => {
+  it("Response should contain individual information data", async () => {
     const res = await request(app).get(url);
     expect(res.statusCode).toEqual(200);
     expect(res.text).toContain("Fame");

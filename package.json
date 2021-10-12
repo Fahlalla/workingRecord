@@ -6,7 +6,7 @@
   "main": "app.js",
   "scripts": {
     "mon": "nodemon --exec  \"npm run test\"",
-    "test": "NODE_ENV='TEST' node --experimental-vm-modules node_modules/jest/bin/jest"
+    "test": "NODE_ENV='TEST' node --experimental-vm-modules node_modules/jest/bin/jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
